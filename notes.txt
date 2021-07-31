@@ -1,0 +1,4 @@
+46:07
+Ben runs yarn dev which puts the apollo server into effect, which gave me an error
+Error: You must `await server.start()` before calling `server.applyMiddleware()`
+so I added `await server.start()` right above `apolloServer.applyMiddleware({ app });` and the error was resolved
