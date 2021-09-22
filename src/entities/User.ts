@@ -1,10 +1,10 @@
 import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
-import { ObjectType, Field, Int } from "type-graphql";
+import { ObjectType, Field } from "type-graphql";
 
 @ObjectType()
 @Entity()
-export class Post {
-  @Field(() => Int)
+export class User {
+  @Field()
   @PrimaryKey()
   id!: number;
 
@@ -18,6 +18,9 @@ export class Post {
 
   //omitting field hides from the graphql schema, doesnt expose it
   @Field()
+  @Property({ type: "text", unique: true })
+  username!: string;
+
   @Property({ type: "text" })
-  title!: string;
+  password!: string;
 }
